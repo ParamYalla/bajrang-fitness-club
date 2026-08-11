@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bajrang Fitness Club | Transform Your Body</title>
+  <meta name="description" content="Bajrang Fitness Club – Premium gym with modern equipment, expert trainers, and a powerful community. Join the transformation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #ff6b00;
+      --orange-light: #ff9500;
+      --orange-dark: #e55a00;
+      --black: #050505;
+      --black-2: #0d0d0d;
+      --black-3: #151515;
+      --gray: #1a1a1a;
+      --white: #ffffff;
+      --text: #e8e8e8;
+      --text-muted: #a0a0a0;
+      --glass: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --radius: 20px;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 62.5%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--orange), var(--orange-dark));
+      border-radius: 10px;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; font-family: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2.4rem;
+    }
+
+    /* ========== NAV ========== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.6rem 0;
+      transition: var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(5, 5, 5, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 1.2rem 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 0 20px rgba(255, 107, 0, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3.2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      transition: width 0.3s;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: var(--black);
+      padding: 1.1rem 2.4rem;
+      border-radius: 50px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(255, 107, 0, 0.35);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 107, 0, 0.5);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      padding: 8px;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 2.5px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(135deg, rgba(5,5,5,0.85) 0%, rgba(5,5,5,0.6) 50%, rgba(255,107,0,0.15) 100%),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      background-attachment: fixed;
+      transform: scale(1.05);
+      transition: transform 0.1s linear;
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, transparent 0%, rgba(5,5,5,0.7) 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding-top: 8rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--orange-light);
+      margin-bottom: 2.4rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(4.2rem, 8vw, 7.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.8rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 3.6rem;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1.5rem 3.2rem;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: var(--black);
+      box-shadow: 0 8px 30px rgba(255, 107, 0, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 40px rgba(255, 107, 0, 0.55);
+    }
+
+    .btn-ghost {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      color: var(--white);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 4rem;
+      margin-top: 6rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: left;
+    }
+
+    .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ========== SECTIONS COMMON ========== */
+    section {
+      padding: 10rem 0;
+      position: relative;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--orange);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3.2rem, 5vw, 4.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-desc {
+      font-size: 1.7rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      background: var(--black-2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-images {
+      position: relative;
+      height: 520px;
+    }
+
+    .about-img {
+      position: absolute;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .about-img:hover img {
+      transform: scale(1.08);
+    }
+
+    .about-img-1 {
+      width: 65%;
+      height: 70%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .about-img-2 {
+      width: 55%;
+      height: 55%;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      border: 4px solid var(--black-2);
+    }
+
+    .about-img-accent {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      border-radius: 50%;
+      bottom: 80px;
+      left: 30%;
+      z-index: 0;
+      opacity: 0.25;
+      filter: blur(40px);
+    }
+
+    .about-content .section-title {
+      margin-bottom: 2rem;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3.2rem;
+    }
+
+    .feature-card {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.4s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(255, 107, 0, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(255, 107, 0, 0.15);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, rgba(255,107,0,0.2), rgba(255,149,0,0.1));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-card h4 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+      font-size: 1.35rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ========== FACILITIES ========== */
+    .facilities {
+      background: var(--black);
+    }
+
+    .facilities-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .facilities-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+    }
+
+    .facility-card {
+      position: relative;
+      background: var(--black-3);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      group: true;
+    }
+
+    .facility-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 107, 0, 0.5);
+      box-shadow: 0 25px 60px rgba(255, 107, 0, 0.2);
+    }
+
+    .facility-img {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .facility-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s;
+    }
+
+    .facility-card:hover .facility-img img {
+      transform: scale(1.12);
+    }
+
+    .facility-body {
+      padding: 2.4rem;
+    }
+
+    .facility-body h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .facility-body p {
+      font-size: 1.45rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ========== MEMBERSHIPS ========== */
+    .memberships {
+      background: var(--black-2);
+      overflow: hidden;
+    }
+
+    .memberships-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .memberships-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+      align-items: stretch;
+    }
+
+    .price-card {
+      position: relative;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 4rem 3.2rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-12px);
+      border-color: rgba(255, 107, 0, 0.4);
+      box-shadow: 0 30px 70px rgba(255, 107, 0, 0.18);
+    }
+
+    .price-card:hover::before {
+      opacity: 1;
+    }
+
+    .price-card.popular {
+      background: linear-gradient(160deg, rgba(255,107,0,0.12), rgba(5,5,5,0.9));
+      border-color: rgba(255, 107, 0, 0.45);
+      transform: scale(1.05);
+      z-index: 2;
+    }
+
+    .price-card.popular::before {
+      opacity: 1;
+    }
+
+    .price-card.popular:hover {
+      transform: scale(1.05) translateY(-12px);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: var(--black);
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .price-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .price-amount {
+      font-family: 'Oswald', sans-serif;
+      font-size: 5.2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .price-amount span {
+      font-size: 1.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .price-period {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .price-features {
+      flex: 1;
+      margin-bottom: 3.2rem;
+    }
+
+    .price-features li {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .price-features li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+
+    .price-btn {
+      width: 100%;
+      padding: 1.5rem;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.35s;
+      text-align: center;
+    }
+
+    .price-btn-outline {
+      background: transparent;
+      border: 2px solid var(--glass-border);
+      color: var(--white);
+    }
+
+    .price-btn-outline:hover {
+      border-color: var(--orange);
+      background: rgba(255, 107, 0, 0.1);
+    }
+
+    .price-btn-solid {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: var(--black);
+      box-shadow: 0 6px 25px rgba(255, 107, 0, 0.35);
+    }
+
+    .price-btn-solid:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 35px rgba(255, 107, 0, 0.5);
+    }
+
+    /* ========== TEAM ========== */
+    .team {
+      background: var(--black);
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .team-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.4rem;
+    }
+
+    .team-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 360px;
+      border: 1px solid var(--glass-border);
+      transition: all 0.5s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(255, 107, 0, 0.2);
+      border-color: rgba(255, 107, 0, 0.4);
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+
+    .team-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .team-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2.4rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.95));
+      transform: translateY(20px);
+      transition: transform 0.4s;
+    }
+
+    .team-card:hover .team-info {
+      transform: translateY(0);
+    }
+
+    .team-info h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .team-info span {
+      font-size: 1.3rem;
+      color: var(--orange-light);
+      font-weight: 600;
+    }
+
+    /* ========== REVIEWS ========== */
+    .reviews {
+      background: var(--black-2);
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    .reviews-header .section-desc {
+      margin: 0 auto;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+    }
+
+    .review-card {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 3.2rem;
+      transition: all 0.4s;
+    }
+
+    .review-card:hover {
+      border-color: rgba(255, 107, 0, 0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .review-stars {
+      color: var(--orange);
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.6rem;
+    }
+
+    .review-text {
+      font-size: 1.55rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 2.4rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--black);
+    }
+
+    .review-name {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .review-role {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+    }
+
+    /* ========== CTA BANNER ========== */
+    .cta-banner {
+      padding: 0;
+      background: var(--black);
+    }
+
+    .cta-inner {
+      background: linear-gradient(135deg, rgba(255,107,0,0.18), rgba(255,149,0,0.08));
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      border-radius: 28px;
+      padding: 7rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,107,0,0.25), transparent 70%);
+      top: -150px;
+      right: -100px;
+      pointer-events: none;
+    }
+
+    .cta-inner h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3rem, 5vw, 4.4rem);
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+      position: relative;
+    }
+
+    .cta-inner p {
+      font-size: 1.7rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 3.2rem;
+      position: relative;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact {
+      background: var(--black-2);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info > p {
+      font-size: 1.6rem;
+      color: var(--text-muted);
+      margin-bottom: 3.2rem;
+      line-height: 1.7;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1.6rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-item p {
+      font-size: 1.45rem;
+      color: var(--text-muted);
+    }
+
+    .contact-form {
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 3.6rem;
+    }
+
+    .form-group {
+      margin-bottom: 2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1.4rem 1.8rem;
+      font-size: 1.5rem;
+      color: var(--white);
+      font-family: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1.6rem;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: var(--black);
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 50px;
+      transition: all 0.35s;
+      box-shadow: 0 6px 25px rgba(255, 107, 0, 0.35);
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(255, 107, 0, 0.5);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--glass-border);
+      padding: 6rem 0 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 1.6rem;
+    }
+
+    .footer-brand p {
+      font-size: 1.45rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-links a {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--text-muted);
+      padding: 0.6rem 0;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--orange);
+      padding-left: 6px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .social-btn:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--black);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 3rem;
+      border-top: 1px solid var(--glass-border);
+      font-size: 1.35rem;
+      color: var(--text-muted);
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ========== MOBILE ========== */
+    @media (max-width: 1024px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .about-images {
+        height: 400px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .facilities-grid,
+      .pricing-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .price-card.popular {
+        transform: none;
+      }
+
+      .price-card.popular:hover {
+        transform: translateY(-12px);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(5, 5, 5, 0.97);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 8rem 3rem 3rem;
+        gap: 2.4rem;
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border-left: 1px solid var(--glass-border);
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.8rem;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+        z-index: 1001;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .hero-stats {
+        gap: 2.4rem;
+      }
+
+      .facilities-grid,
+      .pricing-grid,
+      .reviews-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-inner {
+        padding: 5rem 2.4rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1.2rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-btns {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">
+        <div class="logo-icon">💪</div>
+        Bajrang Fitness
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#memberships">Plans</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Join Now</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Unleash Your Power</div>
+        <h1>Forge Your<br><span>Strongest Self</span></h1>
+        <p>Premium equipment. Expert coaching. A community that pushes you beyond limits. Welcome to Bajrang Fitness Club.</p>
+        <div class="hero-btns">
+          <a href="#memberships" class="btn btn-primary">View Memberships</a>
+          <a href="#about" class="btn btn-ghost">Explore Gym</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Active Members</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Expert Trainers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8</div>
+            <div class="stat-label">Years Strong</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images reveal">
+          <div class="about-img about-img-1">
+            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80" alt="Gym interior" />
+          </div>
+          <div class="about-img about-img-2">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" alt="Training" />
+          </div>
+          <div class="about-img-accent"></div>
+        </div>
+        <div class="about-content reveal reveal-delay-1">
+          <span class="section-label">About Us</span>
+          <h2 class="section-title">Where Strength<br>Meets Discipline</h2>
+          <p class="section-desc">Bajrang Fitness Club is more than a gym — it’s a transformation hub. From heavy lifting to functional training, we provide the tools, guidance, and energy you need to become unstoppable.</p>
+          <div class="about-features">
+            <div class="feature-card">
+              <div class="feature-icon">🏋️</div>
+              <h4>Modern Equipment</h4>
+              <p>State-of-the-art machines & free weights for every goal.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🔥</div>
+              <h4>Expert Coaching</h4>
+              <p>Certified trainers who personalize every session.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🤝</div>
+              <h4>Strong Community</h4>
+              <p>Train with people who push and support you daily.</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">⚡</div>
+              <h4>Results Focused</h4>
+              <p>Programs designed for real, measurable progress.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACILITIES -->
+  <section class="facilities" id="facilities">
+    <div class="container">
+      <div class="facilities-header reveal">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">World-Class Facilities</h2>
+        <p class="section-desc">Everything you need under one roof to build muscle, burn fat, and elevate performance.</p>
+      </div>
+      <div class="facilities-grid">
+        <div class="facility-card reveal">
+          <div class="facility-img">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Weight Training" />
+          </div>
+          <div class="facility-body">
+            <h3>Weight Training</h3>
+            <p>Full rack of free weights, machines, and functional stations for strength & hypertrophy.</p>
+          </div>
+        </div>
+        <div class="facility-card reveal reveal-delay-1">
+          <div class="facility-img">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="Cardio Zone" />
+          </div>
+          <div class="facility-body">
+            <h3>Cardio Zone</h3>
+            <p>Treadmills, cycles, and ellipticals with entertainment to keep your heart pumping.</p>
+          </div>
+        </div>
+        <div class="facility-card reveal reveal-delay-2">
+          <div class="facility-img">
+            <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=600&q=80" alt="Functional Area" />
+          </div>
+          <div class="facility-body">
+            <h3>Functional Area</h3>
+            <p>Kettlebells, battle ropes, sleds, and open floor space for dynamic training.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIPS -->
+  <section class="memberships" id="memberships">
+    <div class="container">
+      <div class="memberships-header reveal">
+        <span class="section-label">Pricing</span>
+        <h2 class="section-title">Choose Your Plan</h2>
+        <p class="section-desc">Flexible memberships designed for every goal and budget. No hidden fees.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <div class="price-name">Starter</div>
+          <div class="price-amount">₹999<span>/mo</span></div>
+          <div class="price-period">Billed monthly</div>
+          <ul class="price-features">
+            <li>Full gym access</li>
+            <li>Locker facility</li>
+            <li>Basic guidance</li>
+            <li>Free fitness assessment</li>
+          </ul>
+          <a href="#contact" class="price-btn price-btn-outline">Get Started</a>
+        </div>
+        <div class="price-card popular reveal reveal-delay-1">
+          <div class="popular-badge">Most Popular</div>
+          <div class="price-name">Pro</div>
+          <div class="price-amount">₹1,799<span>/mo</span></div>
+          <div class="price-period">Billed monthly</div>
+          <ul class="price-features">
+            <li>Everything in Starter</li>
+            <li>2 PT sessions / month</li>
+            <li>Nutrition guidance</li>
+            <li>Group classes access</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="price-btn price-btn-solid">Get Started</a>
+        </div>
+        <div class="price-card reveal reveal-delay-2">
+          <div class="price-name">Elite</div>
+          <div class="price-amount">₹2,999<span>/mo</span></div>
+          <div class="price-period">Billed monthly</div>
+          <ul class="price-features">
+            <li>Everything in Pro</li>
+            <li>Unlimited PT sessions</li>
+            <li>Custom diet plan</li>
+            <li>Progress tracking</li>
+            <li>VIP amenities</li>
+          </ul>
+          <a href="#contact" class="price-btn price-btn-outline">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team" id="team">
+    <div class="container">
+      <div class="team-header reveal">
+        <span class="section-label">Our Coaches</span>
+        <h2 class="section-title">Meet The Team</h2>
+        <p class="section-desc">Certified professionals dedicated to helping you achieve peak performance.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=500&q=80" alt="Coach" />
+          <div class="team-info">
+            <h4>Rajesh Kumar</h4>
+            <span>Head Strength Coach</span>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1594381898411-844e6d375d35?auto=format&fit=crop&w=500&q=80" alt="Coach" />
+          <div class="team-info">
+            <h4>Priya Sharma</h4>
+            <span>Functional Trainer</span>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=500&q=80" alt="Coach" />
+          <div class="team-info">
+            <h4>Amit Singh</h4>
+            <span>Bodybuilding Coach</span>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=500&q=80" alt="Coach" />
+          <div class="team-info">
+            <h4>Neha Patel</h4>
+            <span>Yoga & Mobility</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <span class="section-label">Testimonials</span>
+        <h2 class="section-title">What Members Say</h2>
+        <p class="section-desc">Real transformations. Real stories from the Bajrang family.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best gym in the area. Trainers actually care about your form and progress. I’ve gained 8kg of muscle in 5 months."</p>
+          <div class="review-author">
+            <div class="review-avatar">VK</div>
+            <div>
+              <div class="review-name">Vikram K.</div>
+              <div class="review-role">Member since 2023</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Clean, well-equipped, and the energy is unmatched. The community here keeps me motivated every single day."</p>
+          <div class="review-author">
+            <div class="review-avatar">SR</div>
+            <div>
+              <div class="review-name">Sneha R.</div>
+              <div class="review-role">Member since 2022</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"From beginner to confident lifter — Bajrang made it possible. The PT sessions are worth every rupee."</p>
+          <div class="review-author">
+            <div class="review-avatar">AM</div>
+            <div>
+              <div class="review-name">Arjun M.</div>
+              <div class="review-role">Member since 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2>Ready To Transform?</h2>
+        <p>Join Bajrang Fitness Club today and start the strongest chapter of your life.</p>
+        <a href="#contact" class="btn btn-primary">Claim Your Free Trial</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-label">Get In Touch</span>
+          <h3>Visit Us Or Drop A Message</h3>
+          <p>Have questions about memberships, training, or a free trial? We’re here to help you get started.</p>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>Bajrang Fitness Club<br>Near local landmark, Your City</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <p>+91 98765 43210</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p>hello@bajrangfitness.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon–Sat: 5:00 AM – 10:00 PM<br>Sunday: 6:00 AM – 2:00 PM</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-1" id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your fitness goals..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <div class="logo-icon">💪</div>
+            Bajrang Fitness
+          </a>
+          <p>Building stronger bodies and minds since day one. Join the family that trains with purpose.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+            <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+            <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+            <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#memberships">Memberships</a>
+            <a href="#team">Our Team</a>
+          </div>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <div class="footer-links">
+            <a href="#contact">Contact</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#">FAQ</a>
+            <a href="#">Privacy</a>
+          </div>
+        </div>
+        <div>
+          <h4>Train With Us</h4>
+          <p style="font-size:1.45rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.6rem;">
+            Start your free trial today and feel the difference.
+          </p>
+          <a href="#contact" class="btn btn-primary" style="padding:1.2rem 2.4rem;font-size:1.35rem;">Join Now</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Bajrang Fitness Club. All rights reserved.</span>
+        <span>Built with 💪 for champions</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== NAV SCROLL =====
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ===== MOBILE MENU =====
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ===== PARALLAX HERO =====
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroBg.style.transform = `scale(1.05) translateY(${scrolled * 0.35}px)`;
+      }
+    });
+
+    // ===== SMOOTH REVEAL ON SCROLL =====
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ===== ACTIVE NAV LINK =====
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+      });
+    });
+
+    // ===== CONTACT FORM =====
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = 'Sent ✓';
+      btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        e.target.reset();
+      }, 2500);
+    });
+
+    // ===== MOUSE MOVE SUBTLE GLOW ON CARDS =====
+    document.querySelectorAll('.price-card, .facility-card, .review-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  </script>
+</body>
+</html>
